@@ -115,7 +115,8 @@
       <div></div>
       <el-form-item>
         <el-button type="primary" @click="onSubmit" size="mini">查询</el-button>
-        <el-button @click="openAuthPopup('add')" type="primary" size="mini">新增角色及所属权限</el-button>
+        <el-button type="primary" @click="reset" size="mini">重置</el-button>
+        <el-button type="primary" size="mini">导出</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -147,23 +148,11 @@
       </el-table-column>
     </el-table>
   </div>
-  <el-dialog
-    :title="popupTitle"
-    :visible.sync="popupVisible"
-    width="850px"
-    :before-close="handlePopupClose">
-    <popup v-if="popupVisible" />
-    <span slot="footer" class="dialog-footer">
-      <el-button type="primary" @click="popupVisible = false" size="small">保存配置</el-button>
-    </span>
-</el-dialog>
 </div>
 </template>
 
 <script>
-import Popup from './popup'
 export default {
-  components: { Popup },
   data () {
     return {
       classEnum: '', // 从后端取回
@@ -196,25 +185,23 @@ export default {
         chargeType: '',
         kouliang: ''
       },
-      popupVisible: false,
       tableData: [{}, {}, {}]
     }
   },
-  computed: {
-    popupTitle: function () {
-      return `角色所属权限${this.editType === 'add' ? '新增' : '编辑'}`
-    }
-  },
   methods: {
-    openAuthPopup (editType) {
-      this.editType = editType
-      this.popupVisible = true
+    reset () {
+      this.formInline = {
+        dateRange: '',
+        business: '',
+        operate: '',
+        class: '',
+        proType: '',
+        chargeType: '',
+        kouliang: ''
+      }
     },
     onSubmit () {
       console.log('submit!')
-    },
-    handlePopupClose () {
-      this.popupVisible = false
     }
   }
 
