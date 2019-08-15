@@ -3,7 +3,39 @@
   <h3 style="margin:0px 0 20px 0">数据看板</h3>
   <div class="exhibition">
     <div class="flex-row">
-      <el-card class="box-card" shadow="never" style="width:66%"></el-card>
+      <el-card class="box-card line-panel" shadow="never" style="width:66%">
+        <el-card class="box-card" shadow="never" style="width:40%">
+          <div slot="header" class="clearfix">
+            <span>投放获客成本</span>
+          </div>
+          <table>
+            <tr>
+              <td></td>
+              <td>昨日预计</td>
+              <td>本月累计</td>
+              <td>上月累计</td>
+            </tr>
+            <tr>
+              <td>外部渠道</td>
+              <td>100000.00</td>
+              <td>100000.00</td>
+              <td>100000.00</td>
+            </tr>
+            <tr>
+              <td>集团渠道</td>
+              <td>900000.00</td>
+              <td>900000.00</td>
+              <td>900000.00</td>
+            </tr>
+            <tr>
+              <td>内部短信</td>
+              <td>900000.00</td>
+              <td>900000.00</td>
+              <td>900000.00</td>
+            </tr>
+          </table>
+        </el-card>
+      </el-card>
       <el-card class="box-card" shadow="never" style="width:34%">
         <div slot="header" class="clearfix">
           <span>营销触达成本</span>
@@ -379,6 +411,19 @@ export default {
             width: 20%;
             &:first-child{ font-size: 16px }
           }
+        }
+      }
+      /deep/.line-panel{
+        .el-card__header{
+          padding: 15px 20px;
+        }
+        .el-card{
+          border-radius: 0px;
+          border: unset;
+          border-right: 1px solid #EBEEF5;
+        }
+        .el-card__body{
+          padding: 2px 10px 20px 0px;
         }
       }
     }
