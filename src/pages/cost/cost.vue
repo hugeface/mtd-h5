@@ -1,5 +1,138 @@
 <template>
 <div class="x_panel">
+  <h3 style="margin:0px 0 20px 0">数据看板</h3>
+  <div class="exhibition">
+    <div class="flex-row">
+      <el-card class="box-card" shadow="never" style="width:66%"></el-card>
+      <el-card class="box-card" shadow="never" style="width:34%">
+        <div slot="header" class="clearfix">
+          <span>营销触达成本</span>
+        </div>
+        <table>
+          <tr>
+            <td></td>
+            <td>昨日预计</td>
+            <td>本月累计</td>
+            <td>上月累计</td>
+          </tr>
+          <tr>
+            <td>短信</td>
+            <td>100000.00</td>
+            <td>100000.00</td>
+            <td>100000.00</td>
+          </tr>
+          <tr>
+            <td>闪信</td>
+            <td>900000.00</td>
+            <td>900000.00</td>
+            <td>900000.00</td>
+          </tr>
+          <tr>
+            <td>IVR</td>
+            <td>900000.00</td>
+            <td>900000.00</td>
+            <td>900000.00</td>
+          </tr>
+        </table>
+      </el-card>
+    </div>
+    <div class="flex-row">
+      <el-card class="box-card" shadow="never" style="width:25%">
+        <div slot="header" class="clearfix">
+          <span>营销费用</span>
+        </div>
+        <table>
+          <tr>
+            <td></td>
+            <td>昨日预计</td>
+            <td>本月累计</td>
+            <td>上月累计</td>
+          </tr>
+          <tr>
+            <td>免息券</td>
+            <td>100000.00</td>
+            <td>100000.00</td>
+            <td>100000.00</td>
+          </tr>
+          <tr>
+            <td>免息金</td>
+            <td>900000.00</td>
+            <td>900000.00</td>
+            <td>900000.00</td>
+          </tr>
+        </table>
+      </el-card>
+      <el-card class="box-card" shadow="never" style="width:25%">
+        <div slot="header" class="clearfix">
+          <span>现金/礼金</span>
+        </div>
+        <table>
+          <tr>
+            <td></td>
+            <td>昨日预计</td>
+            <td>本月累计</td>
+            <td>上月累计</td>
+          </tr>
+          <tr>
+            <td>MGM投放</td>
+            <td>100000.00</td>
+            <td>100000.00</td>
+            <td>100000.00</td>
+          </tr>
+          <tr>
+            <td>非投放类</td>
+            <td>900000.00</td>
+            <td>900000.00</td>
+            <td>900000.00</td>
+          </tr>
+        </table>
+      </el-card>
+      <el-card class="box-card" shadow="never" style="width:25%">
+        <div slot="header" class="clearfix">
+          <span>电销成本</span>
+        </div>
+        <table>
+          <tr>
+            <td style="font-size:14px">昨日预计</td>
+            <td>本月累计</td>
+            <td>上月累计</td>
+          </tr>
+          <tr>
+            <td style="font-size:14px">100000.00</td>
+            <td>100000.00</td>
+            <td>100000.00</td>
+          </tr>
+          <tr>
+            <td style="font-size:14px">900000.00</td>
+            <td>900000.00</td>
+            <td>900000.00</td>
+          </tr>
+        </table>
+      </el-card>
+      <el-card class="box-card" shadow="never" style="width:25%">
+        <div slot="header" class="clearfix">
+          <span>品牌成本</span>
+        </div>
+        <table>
+          <tr>
+            <td style="font-size:14px">昨日预计</td>
+            <td>本月累计</td>
+            <td>上月累计</td>
+          </tr>
+          <tr>
+            <td style="font-size:14px">100000.00</td>
+            <td>100000.00</td>
+            <td>100000.00</td>
+          </tr>
+          <tr>
+            <td style="font-size:14px">900000.00</td>
+            <td>900000.00</td>
+            <td>900000.00</td>
+          </tr>
+        </table>
+      </el-card>
+    </div>
+  </div>
   <h3 style="margin:0px 0 20px 0">外部/集团渠道的明细列表</h3>
   <div class="search-area">
     <el-form :inline="true" :model="formInline" label-position="left" class="demo-form-inline" size="mini">
@@ -214,5 +347,41 @@ export default {
   padding: 20px;
   /deep/.el-dialog__body{ padding: 10px 10px 30px 20px }
   /deep/.el-dialog__footer{ text-align: center }
+  .exhibition{
+    .flex-row{
+      height: 200px;
+      display: flex;
+      margin-bottom: 15px;
+      &:last-child{
+        margin-bottom: 20px;
+      }
+      &:first-child{
+        height: 230px;
+      }
+      /deep/.box-card{
+        height: 100%;
+        margin-right:5px;
+        .el-card__header{
+          padding: 15px 20px;
+        }
+        .el-card__body{
+          padding: 15px 10px 20px 0px;
+        }
+        &:last-child{ margin-right: 0 }
+      }
+      table{
+        width: 100%;
+        font-size: 14px;
+        text-align: center;
+        tr{
+          height: 35px;
+          td{
+            width: 20%;
+            &:first-child{ font-size: 16px }
+          }
+        }
+      }
+    }
+  }
 }
 </style>
