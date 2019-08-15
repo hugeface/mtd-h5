@@ -1,0 +1,37 @@
+{
+  "code": "",
+  "data": {
+    "page": 1, 
+    "pageSize": 10, 
+    "pages": 100, 
+    "total": 2000,
+    "rows":[
+      {
+        "mediaName": "",
+        "mediaType": "",
+        "type": "",
+        "advertiserName": "",
+        "advertiserId": "",
+        "dateUpdated": "",
+        "updatedBy": "",
+        "id": 1,
+        "adId": "aa",
+        "adName": "aaa"
+      },
+      {
+        "mediaName": "",
+        "mediaType": "",
+        "type": "",
+        "advertiserName": "",
+        "advertiserId": "",
+        "dateUpdated": "",
+        "updatedBy": "",
+        "id": 1,
+        "adId": "bb",
+        "adName": "bbb"
+      }
+    ]
+  },
+  "flag": "S",
+  "msg": ""
+}

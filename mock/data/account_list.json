@@ -1,0 +1,33 @@
+{
+  "code": "",
+  "data": {
+    "page": 1, 
+    "pageSize": 10, 
+    "pages": 100, 
+    "total": 2000,
+    "rows":[
+      {
+        "mediaName": "1",
+        "mediaType": "1",
+        "type": "",
+        "advertiserName": "11",
+        "advertiserId": "11",
+        "dateUpdated": "",
+        "updatedBy": "",
+        "id": 1
+      },
+      {
+        "mediaName": "2",
+        "mediaType": "2",
+        "type": "",
+        "advertiserName": "22",
+        "advertiserId": "22",
+        "dateUpdated": "",
+        "updatedBy": "",
+        "id": 1
+      }
+    ]
+  },
+  "flag": "S",
+  "msg": ""
+}

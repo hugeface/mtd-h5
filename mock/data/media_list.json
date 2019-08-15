@@ -1,0 +1,13 @@
+{
+  "code": "BDSP200",
+  "msg": "",
+  "flag": "S",
+  "data": {
+    "rows": [
+      {
+        "mediaName": "今日头条",
+        "mediaType": "TOUTIAO"
+      }
+    ]
+  }
+}

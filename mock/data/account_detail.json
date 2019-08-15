@@ -1,0 +1,18 @@
+{
+  "code": "",
+  "data": {
+    "msgId" : "1", 
+    "accountId" : "wx_xwd", 
+    "msgKey" : "3", 
+    "msgType" : "text", 
+    "content" : "hello world", 
+    "mediaId" : "12312312", 
+    "imageUrl" : "", 
+    "isValid" : "1", 
+    "matchType" : "0", 
+    "updatedBy" : "213",
+    "dateUpdated" : "123123"
+  },
+  "flag": "S",
+  "msg": ""
+}

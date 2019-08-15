@@ -1,0 +1,26 @@
+{
+  "flag": "S",
+  "msg": "",
+  "data": {
+    "rows": [
+      {
+        "mediaName": "",
+        "ruleName": "",
+        "id": 1,
+        "ruleType": "",
+        "remark": "",
+        "operator": "",
+        "dateUpdated": "",
+        "isValid": "",
+        "advertiserId": "",
+        "adId": "",
+        "ruleContent": "{\"isNotRegister\":true,\"isNotEndFlow\": true,\"isNotCredit\": true,\"isNotBlack\": true,\"isNotSmsUnsubscribe\":true,\"score\": 0,\"scoreGreat\":0,\"scoreLess\":0,\"scoreGreatEquals\":0,\"scoreLessEquals\":0,\"validStartDate\":\"2019-07-08 11:11:11\",\"validEndDate\":\"2019-07-08 11:11:11\"}"
+      }
+    ],
+    "page": 1,
+    "pages": 1,
+    "pageSize": 1,
+    "total": 1
+  },
+  "code": ""
+}
