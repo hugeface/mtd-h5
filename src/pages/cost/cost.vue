@@ -4,7 +4,7 @@
   <div class="exhibition">
     <div class="flex-row">
       <el-card class="box-card line-panel" shadow="never" style="width:66%">
-        <el-card class="box-card" shadow="never" style="width:40%">
+        <el-card class="box-card left-panel" shadow="never" style="width:40%">
           <div slot="header" class="clearfix">
             <span>投放获客成本</span>
           </div>
@@ -34,6 +34,18 @@
               <td>900000.00</td>
             </tr>
           </table>
+        </el-card>
+        <el-card class="box-card right-panel" shadow="never">
+          <div slot="header" class="clearfix">
+            <span>渠道成本每日变化趋势（内部+外部渠道）</span>
+          </div>
+          <ve-line
+            resizeable
+            :data="chartData"
+            height="235px"
+            :settings="chartSettings"
+            :tooltip-visible="false"
+          ></ve-line>
         </el-card>
       </el-card>
       <el-card class="box-card" shadow="never" style="width:34%">
@@ -164,6 +176,9 @@
         </table>
       </el-card>
     </div>
+    <div style="height:30px">
+      <el-button type="primary" size="mini" style="float:right">导出看板数据</el-button>
+    </div>
   </div>
   <h3 style="margin:0px 0 20px 0">外部/集团渠道的明细列表</h3>
   <div class="search-area">
@@ -228,6 +243,16 @@
           </el-option>
         </el-select>
       </el-form-item>
+      <el-form-item label="合同类型">
+        <el-select v-model="formInline.contractType" filterable clearable placeholder="请选择">
+          <el-option
+            v-for="item in contractTypeEnum"
+            :key="item.value"
+            :label="item.name"
+            :value="item.value">
+          </el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="扣量后">
         <el-select v-model="formInline.kouliang" filterable clearable placeholder="请选择">
           <el-option
@@ -277,8 +302,7 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <div></div>
-      <el-form-item>
+      <el-form-item style="float:right">
         <el-button type="primary" @click="onSubmit" size="mini">查询</el-button>
         <el-button type="primary" @click="reset" size="mini">重置</el-button>
         <el-button type="primary" size="mini">导出</el-button>
@@ -319,6 +343,12 @@
 <script>
 export default {
   data () {
+    this.chartSettings = {
+      labelMap: {
+        'thisMonth': '本月',
+        'lastMonth': '上月'
+      }
+    }
     return {
       classEnum: '', // 从后端取回
       operateEnum: '', // 从后端取回
@@ -340,6 +370,11 @@ export default {
         { name: '扣量后', value: '0' },
         { name: '扣量前', value: '1' }
       ],
+      contractTypeEnum: [
+        { name: '待确认', value: '0' },
+        { name: '已生效', value: '1' },
+        { name: '已失效', value: '2' }
+      ],
       contractEnum: [], // 从后端取回
       formInline: {
         dateRange: '',
@@ -348,9 +383,21 @@ export default {
         class: '',
         proType: '',
         chargeType: '',
+        contractType: '',
         kouliang: ''
       },
-      tableData: [{}, {}, {}]
+      tableData: [{}, {}, {}],
+      chartData: {
+        columns: ['date', 'thisMonth', 'lastMonth'],
+        rows: [
+          { 'date': '1日', 'thisMonth': 1393, 'lastMonth': 1093 },
+          { 'date': '2日', 'thisMonth': 3530, 'lastMonth': 3230 },
+          { 'date': '3日', 'thisMonth': 2923, 'lastMonth': 2623 },
+          { 'date': '4日', 'thisMonth': 1723, 'lastMonth': 1423 },
+          { 'date': '5日', 'thisMonth': 3792, 'lastMonth': 3492 },
+          { 'date': '6日', 'thisMonth': 4593, 'lastMonth': 4293 }
+        ]
+      }
     }
   },
   methods: {
@@ -409,7 +456,8 @@ export default {
           height: 35px;
           td{
             width: 20%;
-            &:first-child{ font-size: 16px }
+            white-space: nowrap;
+            &:first-child{ font-size: 15px }
           }
         }
       }
@@ -424,6 +472,20 @@ export default {
         }
         .el-card__body{
           padding: 2px 10px 20px 0px;
+        }
+        .left-panel{
+          float: left;
+        }
+        .right-panel{
+          border-right: unset;
+          .el-card__header {
+            padding: 10px;
+            text-align: center;
+            border-bottom: unset;
+          }
+          .el-card__body{
+            height: 200px;
+          }
         }
       }
     }
