@@ -17,21 +17,21 @@
             </tr>
             <tr>
               <td>外部渠道</td>
-              <td>100000.00</td>
-              <td>100000.00</td>
-              <td>100000.00</td>
+              <td>100000</td>
+              <td>100000</td>
+              <td>100000</td>
             </tr>
             <tr>
               <td>集团渠道</td>
-              <td>900000.00</td>
-              <td>900000.00</td>
-              <td>900000.00</td>
+              <td>900000</td>
+              <td>900000</td>
+              <td>900000</td>
             </tr>
             <tr>
               <td>内部短信</td>
-              <td>900000.00</td>
-              <td>900000.00</td>
-              <td>900000.00</td>
+              <td>900000</td>
+              <td>900000</td>
+              <td>900000</td>
             </tr>
           </table>
         </el-card>
@@ -61,21 +61,21 @@
           </tr>
           <tr>
             <td>短信</td>
-            <td>100000.00</td>
-            <td>100000.00</td>
-            <td>100000.00</td>
+            <td>100000</td>
+            <td>100000</td>
+            <td>100000</td>
           </tr>
           <tr>
             <td>闪信</td>
-            <td>900000.00</td>
-            <td>900000.00</td>
-            <td>900000.00</td>
+            <td>900000</td>
+            <td>900000</td>
+            <td>900000</td>
           </tr>
           <tr>
             <td>IVR</td>
-            <td>900000.00</td>
-            <td>900000.00</td>
-            <td>900000.00</td>
+            <td>900000</td>
+            <td>900000</td>
+            <td>900000</td>
           </tr>
         </table>
       </el-card>
@@ -94,15 +94,15 @@
           </tr>
           <tr>
             <td>免息券</td>
-            <td>100000.00</td>
-            <td>100000.00</td>
-            <td>100000.00</td>
+            <td>100000</td>
+            <td>100000</td>
+            <td>100000</td>
           </tr>
           <tr>
             <td>免息金</td>
-            <td>900000.00</td>
-            <td>900000.00</td>
-            <td>900000.00</td>
+            <td>900000</td>
+            <td>900000</td>
+            <td>900000</td>
           </tr>
         </table>
       </el-card>
@@ -119,15 +119,15 @@
           </tr>
           <tr>
             <td>MGM投放</td>
-            <td>100000.00</td>
-            <td>100000.00</td>
-            <td>100000.00</td>
+            <td>100000</td>
+            <td>100000</td>
+            <td>100000</td>
           </tr>
           <tr>
             <td>非投放类</td>
-            <td>900000.00</td>
-            <td>900000.00</td>
-            <td>900000.00</td>
+            <td>900000</td>
+            <td>900000</td>
+            <td>900000</td>
           </tr>
         </table>
       </el-card>
@@ -142,14 +142,14 @@
             <td>上月累计</td>
           </tr>
           <tr>
-            <td style="font-size:14px">100000.00</td>
-            <td>100000.00</td>
-            <td>100000.00</td>
+            <td style="font-size:14px">100000</td>
+            <td>100000</td>
+            <td>100000</td>
           </tr>
           <tr>
-            <td style="font-size:14px">900000.00</td>
-            <td>900000.00</td>
-            <td>900000.00</td>
+            <td style="font-size:14px">900000</td>
+            <td>900000</td>
+            <td>900000</td>
           </tr>
         </table>
       </el-card>
@@ -164,145 +164,154 @@
             <td>上月累计</td>
           </tr>
           <tr>
-            <td style="font-size:14px">100000.00</td>
-            <td>100000.00</td>
-            <td>100000.00</td>
+            <td style="font-size:14px">100000</td>
+            <td>100000</td>
+            <td>100000</td>
           </tr>
           <tr>
-            <td style="font-size:14px">900000.00</td>
-            <td>900000.00</td>
-            <td>900000.00</td>
+            <td style="font-size:14px">900000</td>
+            <td>900000</td>
+            <td>900000</td>
           </tr>
         </table>
       </el-card>
     </div>
-    <div style="height:30px">
+    <div style="height:40px;margin-top:25px">
       <el-button type="primary" size="mini" style="float:right">导出看板数据</el-button>
     </div>
   </div>
   <h3 style="margin:0px 0 20px 0">外部/集团渠道的明细列表</h3>
   <div class="search-area">
-    <el-form :inline="true" :model="formInline" label-position="left" class="demo-form-inline" size="mini">
-      <el-form-item label="查询范围">
-        <el-date-picker
-          style="width: 260px"
-          v-model="formInline.dateRange"
-          type="daterange"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="三级分类">
-        <el-select v-model="formInline.class" filterable clearable placeholder="请选择">
-          <el-option
-            v-for="item in classEnum"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="运营负责人">
-        <el-select v-model="formInline.operate" filterable clearable placeholder="请选择">
-          <el-option
-            v-for="item in operateEnum"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="商务负责人">
-        <el-select v-model="formInline.business" filterable clearable placeholder="请选择">
-          <el-option
-            v-for="item in businessEnum"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="产品类型">
-        <el-select v-model="formInline.proType" filterable clearable placeholder="请选择">
-          <el-option
-            v-for="item in proTypeEnum"
-            :key="item.value"
-            :label="item.name"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="计费类型">
-        <el-select v-model="formInline.chargeType" filterable clearable placeholder="请选择">
-          <el-option
-            v-for="item in chargeTypeEnum"
-            :key="item.value"
-            :label="item.name"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="合同类型">
-        <el-select v-model="formInline.contractType" filterable clearable placeholder="请选择">
-          <el-option
-            v-for="item in contractTypeEnum"
-            :key="item.value"
-            :label="item.name"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="扣量后">
-        <el-select v-model="formInline.kouliang" filterable clearable placeholder="请选择">
-          <el-option
-            v-for="item in kouliangEnum"
-            :key="item.value"
-            :label="item.name"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <div></div>
-      <el-form-item>
-        <el-checkbox v-model="isShowContract">
-          是否展示合同维度
-        </el-checkbox>
-      </el-form-item>
-      <el-form-item>
-        <el-select
-          v-model="formInline.kouliang"
-          :disabled="!isShowContract"
-          filterable clearable
-          placeholder="合同名称">
-          <el-option
-            v-for="item in contractEnum"
-            :key="item.value"
-            :label="item.name"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-checkbox v-model="isShowAccount">
-          是否展示账号维度
-        </el-checkbox>
-      </el-form-item>
-      <el-form-item>
-        <el-select
-          v-model="formInline.kouliang"
-          :disabled="!isShowAccount"
-          filterable clearable
-          placeholder="账户名称">
-          <el-option
-            v-for="item in contractEnum"
-            :key="item.value"
-            :label="item.name"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item style="float:right">
+    <el-form :inline="true" :model="formInline" label-width="90px" label-position="left" class="demo-form-inline" size="mini">
+      <div class="option-row">
+        <el-form-item label="查询范围" class="nomarl-item onehalf-width">
+          <el-date-picker
+            style="width: 260px"
+            v-model="formInline.dateRange"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期">
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="三级分类" class="nomarl-item">
+          <el-select v-model="formInline.class" filterable clearable placeholder="请选择">
+            <el-option
+              v-for="item in classEnum"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="运营负责人" class="nomarl-item">
+          <el-select v-model="formInline.operate" filterable clearable placeholder="请选择">
+            <el-option
+              v-for="item in operateEnum"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="商务负责人" class="nomarl-item">
+          <el-select v-model="formInline.business" filterable clearable placeholder="请选择">
+            <el-option
+              v-for="item in businessEnum"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+      </div>
+      <div class="option-row">
+        <el-form-item label="产品类型" class="nomarl-item onehalf-width">
+          <el-select v-model="formInline.proType" filterable clearable placeholder="请选择">
+            <el-option
+              v-for="item in proTypeEnum"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="计费类型" class="nomarl-item">
+          <el-select v-model="formInline.chargeType" filterable clearable placeholder="请选择">
+            <el-option
+              v-for="item in chargeTypeEnum"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="合同类型" class="nomarl-item">
+          <el-select v-model="formInline.contractType" filterable clearable placeholder="请选择">
+            <el-option
+              v-for="item in contractTypeEnum"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="扣量后" class="nomarl-item">
+          <el-select v-model="formInline.kouliang" filterable clearable placeholder="请选择">
+            <el-option
+              v-for="item in kouliangEnum"
+              :key="item.value"
+              :label="item.name"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+      </div>
+      <div style="display:flex;flex-wrap:nowrap;height:40px">
+        <div style="width:32%;display:inline-block">
+          <el-form-item>
+            <el-checkbox v-model="isShowContract">
+              是否展示合同维度
+            </el-checkbox>
+          </el-form-item>
+          <el-form-item>
+            <el-select
+              v-model="formInline.kouliang"
+              :disabled="!isShowContract"
+              filterable clearable
+              placeholder="合同名称">
+              <el-option
+                v-for="item in contractEnum"
+                :key="item.value"
+                :label="item.name"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </div>
+        <div style="width:75%;display:inline-block">
+          <el-form-item>
+            <el-checkbox v-model="isShowAccount">
+              是否展示账号维度
+            </el-checkbox>
+          </el-form-item>
+          <el-form-item>
+            <el-select
+              v-model="formInline.kouliang"
+              :disabled="!isShowAccount"
+              filterable clearable
+              placeholder="账户名称">
+              <el-option
+                v-for="item in contractEnum"
+                :key="item.value"
+                :label="item.name"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </div>
+      </div>
+      <el-form-item style="float:right;margin-bottom:25px">
         <el-button type="primary" @click="onSubmit" size="mini">查询</el-button>
         <el-button type="primary" @click="reset" size="mini">重置</el-button>
         <el-button type="primary" size="mini">导出</el-button>
@@ -487,6 +496,18 @@ export default {
             height: 200px;
           }
         }
+      }
+    }
+  }
+  .search-area{
+    .option-row{
+      display: flex;
+      flex-wrap: nowrap;
+      .nomarl-item {
+        width: 25%;
+      }
+      .onehalf-width{
+        width: 32%;
       }
     }
   }
