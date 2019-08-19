@@ -110,7 +110,7 @@
         <div slot="header" class="clearfix">
           <span>现金/礼金</span>
         </div>
-        <table>
+        <table id="overflow-table">
           <tr>
             <td></td>
             <td>昨日预计</td>
@@ -227,7 +227,12 @@
       </div>
       <div class="option-row">
         <el-form-item label="产品类型" class="nomarl-item onehalf-width">
-          <el-select v-model="formInline.proType" filterable clearable placeholder="请选择">
+          <el-select
+            v-model="formInline.proType"
+            filterable
+            clearable
+            style="width:260px"
+            placeholder="请选择">
             <el-option
               v-for="item in proTypeEnum"
               :key="item.value"
@@ -430,86 +435,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.x_panel {
-  background: #fff;
-  padding: 20px;
-  /deep/.el-dialog__body{ padding: 10px 10px 30px 20px }
-  /deep/.el-dialog__footer{ text-align: center }
-  .exhibition{
-    .flex-row{
-      height: 200px;
-      display: flex;
-      margin-bottom: 15px;
-      &:last-child{
-        margin-bottom: 20px;
-      }
-      &:first-child{
-        height: 230px;
-      }
-      /deep/.box-card{
-        height: 100%;
-        margin-right:5px;
-        .el-card__header{
-          padding: 15px 20px;
-        }
-        .el-card__body{
-          padding: 15px 10px 20px 0px;
-        }
-        &:last-child{ margin-right: 0 }
-      }
-      table{
-        width: 100%;
-        font-size: 14px;
-        text-align: center;
-        tr{
-          height: 35px;
-          td{
-            width: 20%;
-            white-space: nowrap;
-            &:first-child{ font-size: 15px }
-          }
-        }
-      }
-      /deep/.line-panel{
-        .el-card__header{
-          padding: 15px 20px;
-        }
-        .el-card{
-          border-radius: 0px;
-          border: unset;
-          border-right: 1px solid #EBEEF5;
-        }
-        .el-card__body{
-          padding: 2px 10px 20px 0px;
-        }
-        .left-panel{
-          float: left;
-        }
-        .right-panel{
-          border-right: unset;
-          .el-card__header {
-            padding: 10px;
-            text-align: center;
-            border-bottom: unset;
-          }
-          .el-card__body{
-            height: 200px;
-          }
-        }
-      }
-    }
-  }
-  .search-area{
-    .option-row{
-      display: flex;
-      flex-wrap: nowrap;
-      .nomarl-item {
-        width: 25%;
-      }
-      .onehalf-width{
-        width: 32%;
-      }
-    }
-  }
-}
+@import "./css/large-screen.less";
+@import "./css/middle-screen.less";
+@import "./css/small-screen.less";
+
 </style>

@@ -1,0 +1,90 @@
+@media screen and (min-width: 1000px) and (max-width: 1100px) {
+  .x_panel {
+    background: #fff;
+    padding: 20px;
+  }
+  .x_panel /deep/ .el-dialog__body {
+    padding: 10px 10px 30px 20px;
+  }
+  .x_panel /deep/ .el-dialog__footer {
+    text-align: center;
+  }
+  .x_panel .exhibition .flex-row {
+    height: 200px;
+    display: flex;
+    margin-bottom: 15px;
+  }
+  .x_panel .exhibition .flex-row:last-child {
+    margin-bottom: 20px;
+  }
+  .x_panel .exhibition .flex-row:first-child {
+    height: 230px;
+  }
+  .x_panel .exhibition .flex-row /deep/ .box-card {
+    height: 100%;
+    margin-right: 5px;
+  }
+  .x_panel .exhibition .flex-row /deep/ .box-card .el-card__header {
+    padding: 15px 20px;
+  }
+  .x_panel .exhibition .flex-row /deep/ .box-card .el-card__body {
+    padding: 15px 10px 20px 0px;
+  }
+  .x_panel .exhibition .flex-row /deep/ .box-card:last-child {
+    margin-right: 0;
+  }
+  .x_panel .exhibition .flex-row #overflow-table {
+    margin-left: -5px;
+  }
+  .x_panel .exhibition .flex-row table {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    transform: scale(0.9);
+  }
+  .x_panel .exhibition .flex-row table tr {
+    height: 35px;
+  }
+  .x_panel .exhibition .flex-row table tr td {
+    width: 20%;
+    white-space: nowrap;
+  }
+  .x_panel .exhibition .flex-row table tr td:first-child {
+    font-size: 15px;
+  }
+  .x_panel .exhibition .flex-row /deep/ .line-panel .el-card__header {
+    padding: 15px 20px;
+  }
+  .x_panel .exhibition .flex-row /deep/ .line-panel .el-card {
+    border-radius: 0px;
+    border: unset;
+    border-right: 1px solid #EBEEF5;
+  }
+  .x_panel .exhibition .flex-row /deep/ .line-panel .el-card__body {
+    padding: 2px 10px 20px 0px;
+  }
+  .x_panel .exhibition .flex-row /deep/ .line-panel .left-panel {
+    float: left;
+  }
+  .x_panel .exhibition .flex-row /deep/ .line-panel .right-panel {
+    border-right: unset;
+  }
+  .x_panel .exhibition .flex-row /deep/ .line-panel .right-panel .el-card__header {
+    padding: 10px;
+    text-align: center;
+    border-bottom: unset;
+  }
+  .x_panel .exhibition .flex-row /deep/ .line-panel .right-panel .el-card__body {
+    height: 200px;
+  }
+  .x_panel .search-area .option-row {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .x_panel .search-area .option-row .nomarl-item {
+    width: 25%;
+  }
+  .x_panel .search-area .option-row .onehalf-width {
+    width: 32%;
+  }
+}
