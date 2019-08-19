@@ -182,7 +182,7 @@
   </div>
   <h3 style="margin:0px 0 20px 0">外部/集团渠道的明细列表</h3>
   <div class="search-area">
-    <el-form :inline="true" :model="formInline" label-width="90px" label-position="left" class="demo-form-inline" size="mini">
+    <el-form :inline="true" :model="formInline" label-width="90px" :label-position="labelPosition" class="demo-form-inline" size="mini">
       <div class="option-row">
         <el-form-item label="查询范围" class="nomarl-item onehalf-width">
           <el-date-picker
@@ -369,6 +369,7 @@ export default {
       businessEnum: '', // 从后端取回
       isShowContract: false,
       isShowAccount: false,
+      labelPosition: 'left',
       proTypeEnum: [
         { name: '上海大额', value: '0' },
         { name: '北京小额', value: '1' },
@@ -412,6 +413,11 @@ export default {
           { 'date': '6日', 'thisMonth': 4593, 'lastMonth': 4293 }
         ]
       }
+    }
+  },
+  mounted: function () {
+    if (document.body.offsetWidth < 1250) {
+      this.labelPosition = 'top'
     }
   },
   methods: {
