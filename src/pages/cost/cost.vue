@@ -214,14 +214,15 @@
           </el-button>
         </el-form-item>
         <el-form-item label="运营负责人" class="nomarl-item">
-          <el-select v-model="formInline.operate" filterable clearable placeholder="请选择">
+          <!-- <el-select v-model="formInline.operate" filterable clearable placeholder="请选择">
             <el-option
               v-for="item in operateEnum"
               :key="item.value"
               :label="item.label"
               :value="item.value">
             </el-option>
-          </el-select>
+          </el-select> -->
+          <cs-input></cs-input>
         </el-form-item>
         <el-form-item label="商务负责人" class="nomarl-item">
           <el-select v-model="formInline.business" filterable clearable placeholder="请选择">
@@ -365,8 +366,10 @@
 
 <script>
 import timer from './utils/time'
+import CsInput from './input/input'
 
 export default {
+  components: { CsInput },
   data () {
     this.chartSettings = {
       labelMap: {
@@ -379,10 +382,14 @@ export default {
       classEnum: [
         { name: '类别0', value: '0' },
         { name: '类别1', value: '1' },
-        { name: '类别3', value: '2' },
-        { name: '类别4', value: '3' },
-        { name: '类别5', value: '4' },
-        { name: '类别6', value: '5' }
+        { name: '类别2', value: '2' },
+        { name: '类别3', value: '3' },
+        { name: '类别4', value: '4' },
+        { name: '类别5', value: '5' },
+        { name: '类别6', value: '6' },
+        { name: '类别7', value: '7' },
+        { name: '类别8', value: '8' },
+        { name: '类别9', value: '9' }
       ], // 从后端取回
       operateEnum: '', // 从后端取回
       businessEnum: '', // 从后端取回
