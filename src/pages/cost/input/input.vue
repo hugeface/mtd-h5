@@ -1,8 +1,9 @@
 <template>
-  <div class="cs-input">
+  <div
+    :class="`cs-input input__${uuid}`"
+    @click="switchInputStatus">
     <input
-      @blur="switchInputStatus"
-      @click="switchInputStatus"
+      @blur="onInputBlur"
       :class="`${focusedStyle}`" />
     <span class="cs-input-suffix">
       <i class="el-icon-iconName el-icon-arrow-down" />
@@ -10,17 +11,20 @@
   </div>
 </template>
 <script>
+import uuid from '../utils/uuid'
 export default {
   data () {
     return {
+      uuid: '',
       isFocus: false
     }
   },
+  mounted: function () {
+    this.uuid = uuid()
+  },
   computed: {
     focusedStyle: function () {
-      return (this.isFocus
-        ? 'input_focus'
-        : 'input_unfocus')
+      return (this.isFocus ? 'input_focus' : 'input_unfocus')
     }
   },
   methods: {
@@ -29,7 +33,11 @@ export default {
         this.isFocus = true
       } else {
         this.isFocus = false
+        document.querySelector(`.input__${this.uuid} input`).blur()
       }
+    },
+    onInputBlur: function () {
+      this.isFocus = false
     }
   }
 }
