@@ -188,10 +188,13 @@
           <el-date-picker
             style="width: 260px"
             v-model="formInline.dateRange"
+            align="right"
+            unlink-panels
             type="daterange"
             range-separator="至"
             start-placeholder="开始日期"
-            end-placeholder="结束日期">
+            end-placeholder="结束日期"
+            :picker-options="pickerOptions">
           </el-date-picker>
         </el-form-item>
         <el-form-item label="三级分类" class="nomarl-item">
@@ -355,6 +358,8 @@
 </template>
 
 <script>
+import timer from './utils/time'
+
 export default {
   data () {
     this.chartSettings = {
@@ -363,6 +368,7 @@ export default {
         'lastMonth': '上月'
       }
     }
+    const oneDay = 24 * 60 * 60 * 1000
     return {
       classEnum: '', // 从后端取回
       operateEnum: '', // 从后端取回
@@ -370,6 +376,44 @@ export default {
       isShowContract: false,
       isShowAccount: false,
       labelPosition: 'left',
+      pickerOptions: {
+        shortcuts: [
+          {
+            text: '今天',
+            onClick (picker) {
+              picker.$emit('pick', [new Date(), new Date()])
+            }
+          }, {
+            text: '昨天',
+            onClick (picker) {
+              picker.$emit('pick', [new Date() - oneDay, new Date() - oneDay])
+            }
+          },
+          {
+            text: '过去7天',
+            onClick (picker) {
+              picker.$emit('pick', [new Date() - 7 * oneDay, new Date()])
+            }
+          },
+          {
+            text: '过去30天',
+            onClick (picker) {
+              picker.$emit('pick', [new Date() - 30 * oneDay, new Date()])
+            }
+          }, {
+            text: '本月',
+            onClick (picker) {
+              picker.$emit('pick', [new Date().setDate(1), new Date()])
+            }
+          },
+          {
+            text: '上月',
+            onClick (picker) {
+              picker.$emit('pick', [timer.getLastDayOfLastMonth(), timer.getFirstDayOfLastMonth()])
+            }
+          }
+        ]
+      },
       proTypeEnum: [
         { name: '上海大额', value: '0' },
         { name: '北京小额', value: '1' },
