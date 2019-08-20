@@ -12,7 +12,9 @@
 </template>
 <script>
 import uuid from '../utils/uuid'
+
 export default {
+  name: 'CsInput',
   data () {
     return {
       uuid: '',

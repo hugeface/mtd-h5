@@ -222,7 +222,8 @@
               :value="item.value">
             </el-option>
           </el-select> -->
-          <cs-input></cs-input>
+          <!-- <cs-input></cs-input> -->
+          <cs-dropdown></cs-dropdown>
         </el-form-item>
         <el-form-item label="商务负责人" class="nomarl-item">
           <el-select v-model="formInline.business" filterable clearable placeholder="请选择">
@@ -367,9 +368,10 @@
 <script>
 import timer from './utils/time'
 import CsInput from './input/input'
+import CsDropdown from './dropdown/dropdown'
 
 export default {
-  components: { CsInput },
+  components: { CsInput, CsDropdown },
   data () {
     this.chartSettings = {
       labelMap: {
