@@ -198,14 +198,20 @@
           </el-date-picker>
         </el-form-item>
         <el-form-item label="三级分类" class="nomarl-item">
-          <el-select v-model="formInline.class" filterable clearable placeholder="请选择">
+          <el-select v-model="formInline.class" multiple collapse-tags filterable clearable placeholder="请选择">
             <el-option
               v-for="item in classEnum"
               :key="item.value"
-              :label="item.label"
+              :label="item.name"
               :value="item.value">
             </el-option>
           </el-select>
+          <el-button
+           @click="selectAll('formInline.class', 'classEnum')"
+           type="text"
+           style="margin-left:15px">
+            全选
+          </el-button>
         </el-form-item>
         <el-form-item label="运营负责人" class="nomarl-item">
           <el-select v-model="formInline.operate" filterable clearable placeholder="请选择">
@@ -370,7 +376,14 @@ export default {
     }
     const oneDay = 24 * 60 * 60 * 1000
     return {
-      classEnum: '', // 从后端取回
+      classEnum: [
+        { name: '类别0', value: '0' },
+        { name: '类别1', value: '1' },
+        { name: '类别3', value: '2' },
+        { name: '类别4', value: '3' },
+        { name: '类别5', value: '4' },
+        { name: '类别6', value: '5' }
+      ], // 从后端取回
       operateEnum: '', // 从后端取回
       businessEnum: '', // 从后端取回
       isShowContract: false,
@@ -439,7 +452,7 @@ export default {
         dateRange: '',
         business: '',
         operate: '',
-        class: '',
+        class: [],
         proType: '',
         chargeType: '',
         contractType: '',
@@ -475,6 +488,30 @@ export default {
         chargeType: '',
         kouliang: ''
       }
+    },
+    selectAll (propName, enumName) {
+      const newValue = this[enumName].map(item => item.value)
+      const propPath = propName.split('.')
+      if (propPath.length === 1) {
+        this[propName] = newValue
+        return
+      }
+      function buildObj (obj, propPath, value) {
+        const cpPath = [...propPath]
+        if (cpPath.length === 1) {
+          obj[cpPath[0]] = value
+          return obj
+        } else {
+          const temp = cpPath[0]
+          cpPath.shift()
+          obj[temp] = buildObj({}, cpPath, value)
+          return obj
+        }
+      }
+      const temp = propPath[0]
+      propPath.shift()
+      this[temp] = buildObj({}, propPath, newValue)
+      console.log(this.formInline.class)
     },
     onSubmit () {
       console.log('submit!')
