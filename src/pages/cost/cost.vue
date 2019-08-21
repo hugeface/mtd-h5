@@ -368,7 +368,7 @@
 <script>
 import timer from './utils/time'
 import CsInput from './input/input'
-import CsDropdown from './dropdown/dropdown'
+import CsDropdown from './select/select'
 
 export default {
   components: { CsInput, CsDropdown },

@@ -1,5 +1,5 @@
 <template>
-<div :class="['cs-dropdown', `dropdown__${uuid}`]">
+<div :class="['cs-select', `select__${uuid}`]">
   <div :class="`cs-input input__${uuid}`">
     <input v-model="filterStr" :class="[focusedStyle]" :placeholder="inputText" />
     <el-tag
@@ -31,7 +31,7 @@ import CsInput from '../input/input'
 import uuid from '../utils/uuid'
 
 export default {
-  name: 'CsDropdown',
+  name: 'CsSelect',
   components: { CsDropMenu, CsInput },
   props: ['options'],
   data () {
@@ -94,7 +94,7 @@ export default {
 }
 </script>
 <style lang="less">
-.cs-dropdown{
+.cs-select{
   cursor: pointer;
   display: inline-block;
   position: relative;
