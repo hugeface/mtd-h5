@@ -1,24 +1,22 @@
 <template>
-  <div :class="['drop-menu', dropMenuStyle]">
-    ABC
+  <div :class="['drop-menu', 'drop-menu-open']">
+    <ul>
+      <li
+        v-for="item in options"
+        :key="item.value">
+        <span>{{item.label}}</span>
+      </li>
+    </ul>
   </div>
 </template>
 <script>
 export default {
   name: 'CsDropMenu',
-  props: ['isMenuOpen'],
+  props: ['options'],
   data () {
     return {
 
     }
-  },
-  computed: {
-    dropMenuStyle: function () {
-      return (this.isMenuOpen ? 'drop-menu-open' : 'drop-menu-hide')
-    }
-  },
-  mounted () {
-
   }
 }
 </script>
@@ -36,8 +34,19 @@ export default {
   border: 1px solid #E4E7ED;
   border-radius: 4px;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
-  // transition-duration: .3s;
-  // transform-origin: center top;
+  overflow-y: scroll;
+  ul,li{ list-style: none; margin: 0; padding: 0 }
+  ul>li{
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
+    padding: 0 20px;
+    color: #606266;
+    cursor: pointer;
+    &:hover{
+      background-color: #F5F7FA;
+    }
+  }
 }
 .drop-menu-open{
   display: block;

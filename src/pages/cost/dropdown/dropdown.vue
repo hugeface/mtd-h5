@@ -1,18 +1,14 @@
 <template>
-<div class="cs-dropdown">
-    <div
-    :class="`cs-input input__${uuid}`"
-    @click="switchInputStatus">
-    <input
-      @blur="onInputBlur"
-      :class="`${focusedStyle}`" />
+<div :class="['cs-dropdown', `dropdown__${uuid}`]">
+  <div :class="`cs-input input__${uuid}`">
+    <input :class="[focusedStyle]" />
     <span class="cs-input-suffix">
       <i class="el-icon-iconName el-icon-arrow-down" />
     </span>
   </div>
-  <cs-drop-menu
-    :isMenuOpen="isFocus"
-  />
+  <transition name="bounce">
+    <cs-drop-menu v-if="isFocus" :options="options" />
+  </transition>
 </div>
 </template>
 <script>
@@ -23,6 +19,7 @@ import uuid from '../utils/uuid'
 export default {
   name: 'CsDropdown',
   components: { CsDropMenu, CsInput },
+  props: ['options'],
   data () {
     return {
       uuid: '',
@@ -30,26 +27,38 @@ export default {
     }
   },
   mounted: function () {
-    // 获取附着组件的相对浏览器坐标
     this.uuid = uuid()
+    window.addEventListener('click', (e) => {
+      const classArray = e.path.map(item => item.className)
+      if (classArray.join('').match(this.uuid)) {
+        this.isFocus = true
+      } else {
+        this.isFocus = false
+        const csInput = document.querySelector(`.input__${this.uuid} input`)
+        csInput && csInput.blur()
+      }
+    })
   },
+  // destroyed: function () {
+  //   window.removeEventListener('click', (e) => {
+  //     const classArray = e.path.map(item => item.className)
+  //     console.log(e.path)
+  //     console.log(this.uuid, classArray.join('').match(this.uuid))
+  //     if (classArray.join('').match(this.uuid)) {
+  //       this.isFocus = true
+  //     } else {
+  //       this.isFocus = false
+  //       document.querySelector(`.input__${this.uuid} input`).blur()
+  //     }
+  //   })
+  // },
   computed: {
     focusedStyle: function () {
       return (this.isFocus ? 'input_focus' : 'input_unfocus')
     }
   },
   methods: {
-    switchInputStatus: function () {
-      if (!this.isFocus) {
-        this.isFocus = true
-      } else {
-        this.isFocus = false
-        document.querySelector(`.input__${this.uuid} input`).blur()
-      }
-    },
-    onInputBlur: function () {
-      this.isFocus = false
-    }
+
   }
 }
 </script>
@@ -100,6 +109,20 @@ export default {
     font-size: 14px;
     color: #C0C4CC;
     line-height: 28px;
+  }
+}
+.bounce-enter-active {
+  animation: bounce-in .3s;
+}
+.bounce-leave-active {
+  animation: bounce-in .3s linear reverse;
+}
+@keyframes bounce-in {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 100%;
   }
 }
 </style>

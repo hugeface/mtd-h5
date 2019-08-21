@@ -223,7 +223,7 @@
             </el-option>
           </el-select> -->
           <!-- <cs-input></cs-input> -->
-          <cs-dropdown></cs-dropdown>
+          <cs-dropdown :options="selectOptions"></cs-dropdown>
         </el-form-item>
         <el-form-item label="商务负责人" class="nomarl-item">
           <el-select v-model="formInline.business" filterable clearable placeholder="请选择">
@@ -381,6 +381,20 @@ export default {
     }
     const oneDay = 24 * 60 * 60 * 1000
     return {
+      selectOptions: [
+        { label: 'Option0', value: '0' },
+        { label: 'Option1', value: '1' },
+        { label: 'Option2', value: '2' },
+        { label: 'Option3', value: '3' },
+        { label: 'Option4', value: '4' },
+        { label: 'Option5', value: '5' },
+        { label: 'Option6', value: '6' },
+        { label: 'Option7', value: '7' },
+        { label: 'Option8', value: '8' },
+        { label: 'Option9', value: '9' },
+        { label: 'Option10', value: '10' },
+        { label: 'Option11', value: '11' }
+      ],
       classEnum: [
         { name: '类别0', value: '0' },
         { name: '类别1', value: '1' },
