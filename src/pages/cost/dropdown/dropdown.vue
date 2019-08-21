@@ -1,13 +1,27 @@
 <template>
 <div :class="['cs-dropdown', `dropdown__${uuid}`]">
   <div :class="`cs-input input__${uuid}`">
-    <input :class="[focusedStyle]" />
+    <input :class="[focusedStyle]" :placeholder="inputText" />
+    <el-tag
+      size="mini"
+      closable
+      @close="onCloseClick"
+      style="left:0;width:70px"
+      v-if="selected.length > 0">
+      {{selected[0].label}}
+    </el-tag>
+    <el-tag
+      size="mini"
+      style="left:75px"
+      v-if="selected.length > 1">
+      + {{selected.length - 1}}
+    </el-tag>
     <span class="cs-input-suffix">
       <i class="el-icon-iconName el-icon-arrow-down" />
     </span>
   </div>
   <transition name="bounce">
-    <cs-drop-menu v-if="isFocus" :options="options" />
+    <cs-drop-menu v-show="isFocus" :options="options" :uuid="uuid" />
   </transition>
 </div>
 </template>
@@ -23,7 +37,8 @@ export default {
   data () {
     return {
       uuid: '',
-      isFocus: false
+      isFocus: false,
+      selected: []
     }
   },
   mounted: function () {
@@ -37,6 +52,10 @@ export default {
         const csInput = document.querySelector(`.input__${this.uuid} input`)
         csInput && csInput.blur()
       }
+    })
+    this.$eventBus.$on(`updateSelected__${this.uuid}`, data => {
+      console.log(data)
+      this.selected = data
     })
   },
   // destroyed: function () {
@@ -54,11 +73,22 @@ export default {
   // },
   computed: {
     focusedStyle: function () {
-      return (this.isFocus ? 'input_focus' : 'input_unfocus')
+      let style = ''
+      style += this.isFocus ? 'input_focus' : 'input_unfocus'
+      if (this.selected.length > 0) {
+        style += this.selected.length > 1 ? ' wide-left-padding' : ' narrow-left-padding'
+      }
+      return style
+    },
+    inputText: function () {
+      return this.selected.length === 0 ? '请选择' : ''
     }
   },
   methods: {
-
+    onCloseClick: function () {
+      console.log('123')
+      this.selected.pop()
+    }
   }
 }
 </script>
@@ -76,6 +106,19 @@ export default {
 .cs-input{
   width: 180px;
   position: relative;
+  .el-tag{
+    position: absolute;
+    margin: 4px 0 2px 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 10px;
+    .el-icon-close{
+      position: absolute;
+      top: 2px;
+      right: 0px;
+    }
+  }
   cursor: pointer;
   input{
     width: 100%;
@@ -86,20 +129,29 @@ export default {
     border: 1px solid #DCDFE6;
     outline: unset;
     cursor: pointer;
+    &::-webkit-input-placeholder{
+      color: #C3C7CF;
+    }
   }
   .input_focus{
     border: 1px solid #409EFF;
-    &+span{
+    &>.cs-input-suffix{
       transition: .3s;
       transform: rotate(-180deg);
     }
   }
   .input_unfocus{
     border: 1px solid #DCDFE6;
-    &+span{
+    &>.cs-input-suffix{
       transition: .3s;
       transform: rotate(0deg);
     }
+  }
+  .wide-left-padding{
+    padding-left: 120px;
+  }
+  .narrow-left-padding{
+    padding-left: 80px;
   }
   .cs-input-suffix{
     width: 25px;

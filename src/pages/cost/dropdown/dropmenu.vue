@@ -3,7 +3,9 @@
     <ul>
       <li
         v-for="item in options"
-        :key="item.value">
+        :key="item.value"
+        :class="getItemStyle(item)"
+        @click="onOptionClick(item)">
         <span>{{item.label}}</span>
       </li>
     </ul>
@@ -12,10 +14,29 @@
 <script>
 export default {
   name: 'CsDropMenu',
-  props: ['options'],
+  props: ['options', 'uuid'],
   data () {
     return {
-
+      selected: []
+    }
+  },
+  methods: {
+    onOptionClick (item) {
+      const index = this.selected.findIndex(x => x.value === item.value)
+      if (index === -1) {
+        this.selected.push(item)
+      } else {
+        this.selected.splice(index, 1)
+      }
+      console.log(this)
+      this.$eventBus.$emit(`updateSelected__${this.uuid}`, this.selected)
+    },
+    getItemStyle (item) {
+      if (this.selected.findIndex(x => x.value === item.value) !== -1) {
+        return 'item-selected'
+      } else {
+        return ''
+      }
     }
   }
 }
@@ -45,6 +66,19 @@ export default {
     cursor: pointer;
     &:hover{
       background-color: #F5F7FA;
+    }
+  }
+  .item-selected{
+    color: #409EFF;
+    font-weight: 700;
+    &:after{
+      position: absolute;
+      right: 20px;
+      font-family: element-icons;
+      content: "\E6DA";
+      font-size: 12px;
+      font-weight: 700;
+      -webkit-font-smoothing: antialiased;
     }
   }
 }

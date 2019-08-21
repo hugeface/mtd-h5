@@ -4,6 +4,7 @@ import App from './cost.vue'
 import VCharts from 'v-charts'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import EventBus from '../../plugins/eventbus'
 import store from '@/store'
 // import router from './routes.js'
 import http from '../../Http.js'
@@ -14,6 +15,7 @@ Vue.use(ElementUI, {
 })
 Vue.use(ElementUI)
 Vue.use(VCharts)
+Vue.use(EventBus)
 new Vue({
   store,
   i18n,
