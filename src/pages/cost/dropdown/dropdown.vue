@@ -1,7 +1,7 @@
 <template>
 <div :class="['cs-dropdown', `dropdown__${uuid}`]">
   <div :class="`cs-input input__${uuid}`">
-    <input :class="[focusedStyle]" :placeholder="inputText" />
+    <input v-model="filterStr" :class="[focusedStyle]" :placeholder="inputText" />
     <el-tag
       size="mini"
       closable
@@ -21,7 +21,7 @@
     </span>
   </div>
   <transition name="bounce">
-    <cs-drop-menu v-show="isFocus" :options="options" :uuid="uuid" />
+    <cs-drop-menu v-show="isFocus" :options="options" :uuid="uuid" :filterStr="filterStr" />
   </transition>
 </div>
 </template>
@@ -38,7 +38,8 @@ export default {
     return {
       uuid: '',
       isFocus: false,
-      selected: []
+      selected: [],
+      filterStr: ''
     }
   },
   mounted: function () {

@@ -2,7 +2,7 @@
   <div :class="['drop-menu', 'drop-menu-open']">
     <ul>
       <li
-        v-for="item in options"
+        v-for="item in optionsFiltrated"
         :key="item.value"
         :class="getItemStyle(item)"
         @click="onOptionClick(item)">
@@ -14,10 +14,21 @@
 <script>
 export default {
   name: 'CsDropMenu',
-  props: ['options', 'uuid'],
+  props: ['options', 'uuid', 'filterStr'],
   data () {
     return {
       selected: []
+    }
+  },
+  computed: {
+    optionsFiltrated: function () {
+      debugger
+      if (!this.filterStr) {
+        return this.options
+      }
+      return this.options.filter(item => {
+        return item.label.includes(this.filterStr)
+      })
     }
   },
   methods: {
@@ -28,7 +39,6 @@ export default {
       } else {
         this.selected.splice(index, 1)
       }
-      console.log(this)
       this.$eventBus.$emit(`updateSelected__${this.uuid}`, this.selected)
     },
     getItemStyle (item) {
