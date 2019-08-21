@@ -1,5 +1,10 @@
 <template>
   <div :class="['drop-menu', 'drop-menu-open']">
+    <div class="tools">
+      <el-button @click="selectAll" style="width:50%">全选</el-button>
+      <el-divider direction="vertical"></el-divider>
+      <el-button @click="unselectAll" style="width:50%;margin-left:0">全不选</el-button>
+    </div>
     <ul>
       <li
         v-for="item in optionsFiltrated"
@@ -47,6 +52,14 @@ export default {
       } else {
         return ''
       }
+    },
+    selectAll () {
+      this.selected = JSON.parse(JSON.stringify(this.options))
+      this.$eventBus.$emit(`updateSelected__${this.uuid}`, this.selected)
+    },
+    unselectAll () {
+      this.selected = []
+      this.$eventBus.$emit(`updateSelected__${this.uuid}`, this.selected)
     }
   }
 }
@@ -61,12 +74,30 @@ export default {
   max-height: 274px;
   position: absolute;
   background: #ffffff;
-  padding: 6px 0;
+  padding-bottom: 6px;
   border: 1px solid #E4E7ED;
   border-radius: 4px;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
-  overflow-y: scroll;
+  overflow-y: hidden;
+  .tools{
+    height: 35px;
+    border-bottom: 1px solid #E4E7ED;
+    white-space: nowrap;
+    .el-divider--vertical{
+      height: 100%;
+      margin: 0;
+    }
+    button{
+      height: 100%;
+      border: unset;
+      border-radius: 0;
+    }
+  }
   ul,li{ list-style: none; margin: 0; padding: 0 }
+  ul{
+    max-height: 239px;
+    overflow-y: scroll;
+  }
   ul>li{
     height: 34px;
     line-height: 34px;
@@ -82,8 +113,8 @@ export default {
     color: #409EFF;
     font-weight: 700;
     &:after{
-      position: absolute;
-      right: 20px;
+      position: relative;
+      float: right;
       font-family: element-icons;
       content: "\E6DA";
       font-size: 12px;
